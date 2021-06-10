@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import Link from '../Link';
 import Typography from '../Typography';
+import useContent from '../../hooks/useContent';
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -27,6 +28,9 @@ const useStyles = createUseStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const history = useHistory();
+  const { content } = useContent('/site-header');
+  const { Title } = content;
+
   const handleClick = () => history.push('/');
   return (
     <header className={classes.root}>
@@ -35,7 +39,7 @@ const Header = () => {
         onClick={handleClick}
         className={classes.homeButton}
       >
-        React Starter
+        {Title}
       </Typography>
       <nav>
         <Link

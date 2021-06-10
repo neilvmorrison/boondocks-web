@@ -69,11 +69,15 @@ const defaultTheme = {
   },
   shadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
   breakpoints: {
-    xs: 0,
-    sm: 600,
-    md: 960,
-    lg: 1280,
-    xl: 1920,
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
+    up: (key) =>
+      `@media (min-width: ${defaultTheme.breakpoints.values[key]}px)`,
   },
   transition: 'all 0.2s ease-in-out',
 };

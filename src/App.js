@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createUseStyles } from 'react-jss';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Router from './components/Router';
 import { API_URL } from './config/api';
@@ -12,7 +13,7 @@ const useStyles = createUseStyles((theme) => ({
       margin: 0,
     },
     html: {
-      fontFamily: 'sans-serif',
+      fontFamily: 'Rubik, sans-serif',
     },
   },
 }));
@@ -23,6 +24,7 @@ function App() {
     <div className='App'>
       <Header />
       <Router />
+      <Footer />
     </div>
   );
 }

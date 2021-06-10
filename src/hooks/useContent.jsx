@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const useContent = (url) => {
   const [loading, setLoading] = useState(false);
@@ -6,17 +7,20 @@ const useContent = (url) => {
   const [content, setContent] = useState({});
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(url);
-      setContent(data);
-    } catch (err) {
-      setError(err);
-      return err;
-    } finally {
-      setLoading(false);
-    }
-  });
+    const getContent = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(url);
+        setContent(data);
+      } catch (err) {
+        setError(err);
+        return err;
+      } finally {
+        setLoading(false);
+      }
+    };
+    getContent();
+  }, [url]);
 
   return { loading, error, content };
 };
